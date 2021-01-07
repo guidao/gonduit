@@ -21,3 +21,13 @@ type TransactionSearchConstraints struct {
 	PHIDs       []string `json:"phids,omitempty"`
 	AuthorPHIDs []string `json:"authorPHIDs,omitempty"`
 }
+
+type Transactions struct {
+	ObjectIdentifier string `json:"objectIdentifier"`
+	Transactions     []Transaction
+}
+
+type Transaction struct {
+	Type  string
+	Value interface{}
+}

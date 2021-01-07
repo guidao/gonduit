@@ -151,3 +151,21 @@ type ManiphestSearchConstraints struct {
 	// Spaces - search for objects in certain spaces.
 	Spaces []string `json:"spaces,omitempty"`
 }
+
+type ManiphestEditRequest Transactions
+
+func (m *ManiphestEditRequest) AddParent(phid string) *ManiphestEditRequest {
+	m.Transactions = append(m.Transactions, Transaction{
+		Type:  "parent",
+		Value: phid,
+	})
+	return m
+}
+
+func (m *ManiphestEditRequest) AddColumn(columns []string) *ManiphestEditRequest {
+	m.Transactions = append(m.Transactions, Transaction{
+		Type:  "column",
+		Value: columns,
+	})
+	return m
+}
